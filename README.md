@@ -45,7 +45,9 @@ assign Q = D&(~C)&A;
 assign R = C&(~B)&A;
 assign S = ~(P|Q|R);
 assign F = ~S;
-endmodule```
+endmodule
+```
+
 
 ## RTL realization
 
