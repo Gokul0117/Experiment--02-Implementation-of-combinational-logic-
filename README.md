@@ -48,55 +48,52 @@ F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'
 ```Program to implement the given logic function and to verify its operations in quartus using Verilog programming.
 Developed by: Gokul J
 RegisterNumber: 212222230038
-
-module fourexp(A,B,C,D,F);
+```
+### F1= A’B’C’D’+AC’D’+B’CD’+A’BCD+BC’D
+```
+module f1(A,B,C,D,F1);
 input A,B,C,D;
-output F;
-wire P,Q,R;
-assign P = C&(~B)&(~A);
-assign Q = D&(~C)&(~A);
-assign R = (~C)&B&(~A);
-assign F = (~P&~Q&~R);
-endmodule
-
-USING NOR OPERATION
-
-module fourexp(A,B,C,D,F);
-input A,B,C,D;
-output F;
-wire P,Q,R,S;
-assign P = C&(~B)&A;
-assign Q = D&(~C)&A;
-assign R = C&(~B)&A;
-assign S = ~(P|Q|R);
-assign F = ~S;
+output F1;
+wire p,q,r,s,t;
+assign p = (~A & ~B & ~C & ~D);
+assign q = (A & ~C & ~D);
+assign r = (~B & C & ~D);
+assign s = (~A & B & C & D);
+assign t = (B & ~C & D);
+assign F1 = p | q | r | s | t;
 endmodule
 ```
-
-
-## RTL realization
+### F2=xy’z+x’y’z+w’xy+wx’y+wxy
+```
+module imp(w,x,y,z,F2);
+input w,x,y,z;
+output F2;
+wire p,q,r,s,t;
+assign p= (x & ~y & z);
+assign q= (~x & ~y & z);
+assign r= (~w & x & y);
+assign s= (w & ~x & y);
+assign t= (w & x & y);
+assign F2= p | q | r | s | t;
+endmodule
+```
 
 ## Output:
 
 ## RTL
+### F1
+![Screenshot 2023-06-06 130341](https://github.com/Gokul0117/Experiment--02-Implementation-of-combinational-logic-/assets/121165938/66bb4d66-1f09-448e-9fcb-e2bfefaed9b3)
 
-NAND combination : 
-![Screenshot 2023-04-23 204013](https://user-images.githubusercontent.com/121165938/233848007-2bd15509-2586-4909-920d-64ca5eeaca2f.png)
-
-NOR combination :
-![Screenshot 2023-04-23 204630](https://user-images.githubusercontent.com/121165938/233848246-2124b870-c03a-46ba-8aed-52872a301776.png)
-
+### F2
+![Screenshot 2023-06-06 130516](https://github.com/Gokul0117/Experiment--02-Implementation-of-combinational-logic-/assets/121165938/1cb32153-5714-4610-9b0b-25f5462949ad)
 
 
 ## Timing Diagram
+### F1
+![Screenshot 2023-06-06 130619](https://github.com/Gokul0117/Experiment--02-Implementation-of-combinational-logic-/assets/121165938/7412485d-1556-4931-b632-44c8d5b81a88)
 
-NAND combination:
-
-![Screenshot 2023-04-23 204645](https://user-images.githubusercontent.com/121165938/233848270-46a94be8-11e4-40a5-9fd2-99e54a1084ca.png)
-
-NOR combination :
-
-![Screenshot 2023-04-23 204729](https://user-images.githubusercontent.com/121165938/233848322-2e2747c4-92eb-4513-a1e7-a88318bc6510.png)
+### F2
+![Screenshot 2023-06-06 130813](https://github.com/Gokul0117/Experiment--02-Implementation-of-combinational-logic-/assets/121165938/b9896c23-2035-43be-a8a7-e193de46975b)
 
 
 
